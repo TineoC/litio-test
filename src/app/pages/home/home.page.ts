@@ -32,14 +32,13 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.companiesStateService.companies$.subscribe((companies) => {
-      this.companies = companies;
+      this.companies = companies.filter(({ status }) => status === true);
       this.isLoading = false;
     });
 
     this.companiesService.getAllActive();
   }
 
-  // Function to create an array of n elements
   counter(i: number) {
     return new Array(i);
   }
