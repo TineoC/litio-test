@@ -1,6 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Guardados</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Aseguradoras guardadas</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,7 +17,7 @@
 
   <ion-card>
     <ion-card-header class="flex flex-row justify-between items-center">
-      <ion-card-title>Aseguradoras</ion-card-title>
+      <ion-card-title>Panel administrativo</ion-card-title>
 
       <ion-button id="create-modal" class="font-bold">
         <ion-icon name="add-outline" class="stroke-white"></ion-icon

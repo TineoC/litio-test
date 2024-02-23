@@ -67,11 +67,10 @@ export class SavedPage implements OnInit {
   }
 
   ngOnInit(): void {
+    this.companiesService.getAll();
     this.companiesStateService.companies$.subscribe((companies) => {
       this.companies = companies;
       this.isLoading = false;
     });
-
-    this.companiesService.getAll();
   }
 }

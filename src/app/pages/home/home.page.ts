@@ -36,8 +36,7 @@ export class HomePage implements OnInit {
       this.isLoading = false;
     });
 
-    // Trigger the data fetch
-    this.companiesService.getAll();
+    this.companiesService.getAllActive();
   }
 
   // Function to create an array of n elements

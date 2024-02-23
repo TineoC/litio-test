@@ -24,4 +24,22 @@ export class CompaniesStateService {
     const updatedCompanies = [...currentCompanies, newCompany];
     this.companiesSubject.next(updatedCompanies);
   }
+
+  updateCompany(updatedCompany: Company) {
+    const currentCompanies = this.companiesSubject.getValue();
+
+    const index = currentCompanies.findIndex(
+      (company) => company.id === updatedCompany.id
+    );
+
+    if (index === -1) {
+      console.error('Company was not found');
+      return;
+    }
+
+    const updatedCompanies = [...currentCompanies];
+    updatedCompanies[index] = updatedCompany;
+
+    this.companiesSubject.next(updatedCompanies);
+  }
 }

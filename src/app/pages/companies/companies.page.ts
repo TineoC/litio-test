@@ -25,7 +25,6 @@ export class CompaniesPage implements OnInit {
       this.isLoading = false;
     });
 
-    // Trigger the data fetch
-    this.companiesService.getAll();
+    this.companiesService.getAllActive();
   }
 }
