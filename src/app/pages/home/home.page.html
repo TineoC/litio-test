@@ -1,0 +1,97 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title><img src="/assets/logo.jpg" width="50" height="50" /></ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Aseguradoras</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+
+  <div id="container" class="flex flex-col justify-between text-center gap-y-6">
+    <section>
+      <h3 class="text-2xl font-bold mb-4">¿Qué quieres hacer hoy?</h3>
+      <ion-button class="font-bold" color="primary" expand="full">
+        <span class="my-1 text-xl normal-case font-medium"
+          >Cotizar una póliza
+        </span>
+      </ion-button>
+    </section>
+
+    <section>
+      <h5 class="font-bold">Aseguradoras más populares</h5>
+
+      <div class="grid grid-rows-auto grid-cols-3">
+        <ng-container *ngIf="isLoading">
+          <ion-card
+            *ngFor="let _ of counter(6)"
+            class="max-w-[300px] h-[100px] flex flex-col items-center justify-center hover:bg-slate-100"
+          >
+            <ion-skeleton-text
+              [animated]="true"
+              class="h-full"
+            ></ion-skeleton-text>
+          </ion-card>
+        </ng-container>
+
+        @for (company of companies.slice(0, 6); track company.id) {
+        <ion-card
+          class="max-w-[300px] h-[100px] flex flex-col items-center justify-center hover:bg-slate-100"
+        >
+          <img [alt]="company.name" [src]="company.image" class="w-2/3" />
+        </ion-card>
+        }
+      </div>
+
+      <ion-button
+        fill="clear"
+        class="underline normal-case"
+        color="dark"
+        [routerLink]="['/companies']"
+      >
+        Ver más aseguradoras<ion-icon
+          slot="end"
+          name="chevron-forward-outline"
+        ></ion-icon
+      ></ion-button>
+    </section>
+
+    <ion-card class="h-[150px]">
+      <!-- <ion-card-content
+        class="relative w-full "
+      > -->
+      <div
+        class="w-full h-full absolute bg-gradient-to-r from-transparent to-[#094e82d4]"
+      ></div>
+      <img
+        alt="Anuncio seguro Nissan"
+        src="assets/anuncio-nissan.jpg"
+        class="w-full h-full object-cover block"
+      />
+      <span class="text-[#e7de7f] font-bold text-2xl absolute left-100 bottom-2"
+        >Renueva tu póliza hoy con hasta un<br />
+        <span class="text-4xl md:text-3xl">20% OFF</span></span
+      >
+      <!-- </ion-card-content> -->
+    </ion-card>
+
+    <ion-card> </ion-card>
+
+    <!-- imagen renueva tu poliza hoy con hasta un 20% off -->
+
+    <div class="flex flex-row justify-around">
+      <ion-button class="normal-case" shape="round" color="primary"
+        >Iniciar sesión aquí</ion-button
+      >
+      <ion-button class="normal-case" shape="round" color="primary"
+        >Registrate aquí</ion-button
+      >
+    </div>
+  </div>
+</ion-content>

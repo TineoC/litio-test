@@ -1,0 +1,105 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Guardados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Guardados</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header class="flex flex-row justify-between items-center">
+      <ion-card-title>Aseguradoras</ion-card-title>
+
+      <ion-button id="create-modal" class="font-bold">
+        <ion-icon name="add-outline" class="stroke-white"></ion-icon
+        >Crear</ion-button
+      >
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list class="max-h-[600px] overflow-y-scroll">
+        <ion-item *ngFor="let company of companies; let i = index">
+          <ion-thumbnail slot="start" class="flex items-center justify-center">
+            <img
+              [alt]="company.name"
+              [src]="company.image ? company.image : 'https://ionicframework.com/docs/img/demos/card-media.png'"
+            />
+          </ion-thumbnail>
+          <p class="flex flex-col gap-y-2">
+            <ion-label class="font-bold">{{ company.name }}</ion-label>
+            <ion-text class="text-sm text-gray-800 text-justify"
+              >{{ company.description }}</ion-text
+            >
+            <ion-badge
+              slot="start"
+              class="w-fit"
+              [color]="company.status ? 'success' : 'danger'"
+              >{{ company.status ? "Activo" : "Inactivo" }}</ion-badge
+            >
+          </p>
+          <ion-button
+            color="secondary"
+            class="ml-4"
+            (click)="openUpdateModal(company)"
+            ><ion-icon name="pencil-outline" class="mr-1"></ion-icon>
+            Editar</ion-button
+          >
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-modal trigger="create-modal">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="closeModal()">Cancelar</ion-button>
+          </ion-buttons>
+          <ion-title>Crear aseguradora</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-input
+            label="Nombre"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="Ingresa el nombre de la aseguradora"
+            [(ngModel)]="name"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            label="Descripción (opcional)"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="Descripción de la aseguradora"
+            [(ngModel)]="description"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            label="Imágen (opcional)"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="Imágen de la aseguradora"
+            [(ngModel)]="image"
+          ></ion-input>
+        </ion-item>
+
+        <ion-button
+          class="font-bold"
+          color="primary"
+          expand="full"
+          (click)="create()"
+          >Crear</ion-button
+        >
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

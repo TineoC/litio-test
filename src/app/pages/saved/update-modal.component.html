@@ -1,0 +1,53 @@
+<ion-content class="ion-padding">
+  <div class="flex justify-between items-center">
+    <ion-title>Actualizar aseguradora</ion-title>
+    <ion-button (click)="closeModal()">Cancelar</ion-button>
+  </div>
+
+  <ion-item>
+    <ion-input
+      label="Nombre"
+      labelPlacement="stacked"
+      type="text"
+      placeholder="Ingresa el nombre de la aseguradora"
+      [(ngModel)]="companyData.name"
+      (ngModelChange)="checkFormChanges()"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input
+      label="Descripción (opcional)"
+      labelPlacement="stacked"
+      type="text"
+      placeholder="Descripción de la aseguradora"
+      [(ngModel)]="companyData.description"
+      (ngModelChange)="checkFormChanges()"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input
+      label="Imagen (opcional)"
+      labelPlacement="stacked"
+      type="text"
+      placeholder="https://dominio/imagen.jpg"
+      [(ngModel)]="companyData.image"
+      (ngModelChange)="checkFormChanges()"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-toggle
+      [(ngModel)]="companyData.status"
+      (ionChange)="checkFormChanges()"
+      >Estatus</ion-toggle
+    >
+  </ion-item>
+
+  <ion-button
+    class="font-bold"
+    color="primary"
+    expand="full"
+    (click)="updateCompany()"
+    [disabled]="!isFormDirty"
+    >Actualizar</ion-button
+  >
+</ion-content>

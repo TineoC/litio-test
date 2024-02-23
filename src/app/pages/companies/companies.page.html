@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Catálogo de Aseguradoras</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Catálogo de Aseguradoras</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Aseguradoras</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        @for (company of companies; track company.id) {
+        <ion-item>
+          <ion-thumbnail slot="start" class="flex items-center justify-center">
+            <img [alt]="company.name" [src]="company.image" />
+          </ion-thumbnail>
+          <p class="flex flex-col">
+            <ion-label class="font-bold">{{ company.name }}</ion-label>
+            <ion-text class="text-sm text-gray-800 text-justify"
+              >{{ company.description }}</ion-text
+            >
+          </p>
+        </ion-item>
+        }
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

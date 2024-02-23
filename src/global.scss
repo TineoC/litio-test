@@ -29,3 +29,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+// Swiper
+@import "swiper/scss";
+@import "swiper/scss/navigation";
+@import "swiper/scss/pagination";
+
+* {
+  font-family: "Roboto", sans-serif;
+}

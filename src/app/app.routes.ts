@@ -18,12 +18,44 @@ Hay 4 paginas:
 
 export const routes: Routes = [
   {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
-  },
-  {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    loadComponent: () =>
+      import('./pages/initial-tab/initial-tab.page').then(
+        (m) => m.InitialTabPage
+      ),
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'home',
+      },
+      {
+        path: 'home',
+        loadComponent: () =>
+          import('./pages/home/home.page').then((m) => m.HomePage),
+      },
+      {
+        path: 'companies',
+        loadComponent: () =>
+          import('./pages/companies/companies.page').then(
+            (m) => m.CompaniesPage
+          ),
+      },
+      {
+        path: 'saved',
+        loadComponent: () =>
+          import('./pages/saved/saved.page').then((m) => m.SavedPage),
+      },
+      {
+        path: 'policy',
+        loadComponent: () =>
+          import('./pages/policy/policy.page').then((m) => m.PolicyPage),
+      },
+      {
+        path: 'help',
+        loadComponent: () =>
+          import('./pages/help/help.page').then((m) => m.HelpPage),
+      },
+    ],
   },
 ];
